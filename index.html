@@ -29,7 +29,7 @@
       background-size:cover;
       border-bottom:3px solid #e63946;
       color:#fff;
-      position:relative;
+      position:contain;
       padding:60px 20px;
     }
     .intro::after {
@@ -50,32 +50,39 @@
 
     /* Carrousel CSS (radio + dots) */
     .carousel { position:relative; max-width:900px; margin:auto; }
-    .carousel-viewport { overflow:hidden; border-radius:10px; position:relative; z-index:1; }
-    .carousel-track { display:flex; width:500%; transition:transform 0.6s ease; }
-    .carousel-slide { min-width:100%; height:400px; }
-    .carousel-slide img { width:100%; height:100%; object-fit:cover; display:block; }
-    /* radios */
-    .carousel input[type="radio"] { display:none; }
-    /* positions */
-    #s1:checked ~ .carousel-viewport .carousel-track { transform:translateX(0%); }
-    #s2:checked ~ .carousel-viewport .carousel-track { transform:translateX(-100%); }
-    #s3:checked ~ .carousel-viewport .carousel-track { transform:translateX(-200%); }
-    #s4:checked ~ .carousel-viewport .carousel-track { transform:translateX(-300%); }
-    #s5:checked ~ .carousel-viewport .carousel-track { transform:translateX(-400%); }
-    /* dots */
-    .carousel-dots {
-      display:flex; justify-content:center; gap:10px; margin-top:12px;
-      position:relative; z-index:2; /* au-dessus de la viewport */
-    }
-    .carousel-dots label {
-      width:12px; height:12px; border-radius:50%; background:#bbb; cursor:pointer;
-      display:inline-block;
-    }
-    #s1:checked ~ .carousel-dots label[for="s1"],
-    #s2:checked ~ .carousel-dots label[for="s2"],
-    #s3:checked ~ .carousel-dots label[for="s3"],
-    #s4:checked ~ .carousel-dots label[for="s4"],
-    #s5:checked ~ .carousel-dots label[for="s5"] { background:#e63946; }
+.carousel-viewport { overflow:hidden; border-radius:10px; position:relative; z-index:1; }
+.carousel-track { display:flex; width:500%; transition:transform 0.6s ease; }
+.carousel-slide { min-width:100%; height:400px; }
+.carousel-slide img {
+  width:100%;
+  height:100%;
+  object-fit:cover;   /* recadrage pour remplir le cadre */
+  display:block;
+}
+
+/* Radios */
+.carousel input[type="radio"] { display:none; }
+#s1:checked ~ .carousel-viewport .carousel-track { transform:translateX(0%); }
+#s2:checked ~ .carousel-viewport .carousel-track { transform:translateX(-100%); }
+#s3:checked ~ .carousel-viewport .carousel-track { transform:translateX(-200%); }
+#s4:checked ~ .carousel-viewport .carousel-track { transform:translateX(-300%); }
+#s5:checked ~ .carousel-viewport .carousel-track { transform:translateX(-400%); }
+
+/* Points */
+.carousel-dots {
+  display:flex; justify-content:center; gap:10px; margin-top:12px;
+  position:relative; z-index:2;
+}
+.carousel-dots label {
+  width:12px; height:12px; border-radius:50%; background:#bbb; cursor:pointer;
+  display:inline-block;
+}
+#s1:checked ~ .carousel-dots label[for="s1"],
+#s2:checked ~ .carousel-dots label[for="s2"],
+#s3:checked ~ .carousel-dots label[for="s3"],
+#s4:checked ~ .carousel-dots label[for="s4"],
+#s5:checked ~ .carousel-dots label[for="s5"] { background:#e63946; }
+
 
     /* Équipe */
     #team { text-align:center; }
@@ -151,37 +158,38 @@
   </section>
 
   <!-- Galerie / Carrousel CSS -->
-  <section id="gallery">
-    <h2>Galerie</h2>
-    <div class="carousel">
-      <!-- Radios (doivent être au même niveau que viewport et dots) -->
-      <input type="radio" name="slide" id="s1" checked>
-      <input type="radio" name="slide" id="s2">
-      <input type="radio" name="slide" id="s3">
-      <input type="radio" name="slide" id="s4">
-      <input type="radio" name="slide" id="s5">
+<section id="gallery">
+  <h2>Galerie</h2>
+  <div class="carousel">
+    <!-- Radios -->
+    <input type="radio" name="slide" id="s1" checked>
+    <input type="radio" name="slide" id="s2">
+    <input type="radio" name="slide" id="s3">
+    <input type="radio" name="slide" id="s4">
+    <input type="radio" name="slide" id="s5">
 
-      <!-- Vue -->
-      <div class="carousel-viewport">
-        <div class="carousel-track">
-          <div class="carousel-slide"><img src="https://i.imgur.com/mkv3shD.jpg" alt="Photo 1"></div>
-          <div class="carousel-slide"><img src="https://i.imgur.com/dP5RvT8.jpg" alt="Photo 2"></div>
-          <div class="carousel-slide"><img src="https://i.imgur.com/pcqXzPp.jpg" alt="Photo 3"></div>
-          <div class="carousel-slide"><img src="https://i.imgur.com/GzzBPnZ.png" alt="Photo 4"></div>
-          <div class="carousel-slide"><img src="https://i.imgur.com/wrYns3E.jpg" alt="Photo 5"></div>
-        </div>
-      </div>
-
-      <!-- Points (labels cliquables) -->
-      <div class="carousel-dots">
-        <label class="dot" for="s1" aria-label="Photo 1"></label>
-        <label class="dot" for="s2" aria-label="Photo 2"></label>
-        <label class="dot" for="s3" aria-label="Photo 3"></label>
-        <label class="dot" for="s4" aria-label="Photo 4"></label>
-        <label class="dot" for="s5" aria-label="Photo 5"></label>
+    <!-- Vue -->
+    <div class="carousel-viewport">
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://i.imgur.com/mkv3shD.jpg" alt="Photo 1"></div>
+        <div class="carousel-slide"><img src="https://i.imgur.com/dP5RvT8.jpg" alt="Photo 2"></div>
+        <div class="carousel-slide"><img src="https://i.imgur.com/pcqXzPp.jpg" alt="Photo 3"></div>
+        <div class="carousel-slide"><img src="https://i.imgur.com/GzzBPnZ.png" alt="Photo 4"></div>
+        <div class="carousel-slide"><img src="https://i.imgur.com/wrYns3E.jpg" alt="Photo 5"></div>
       </div>
     </div>
-  </section>
+
+    <!-- Points -->
+    <div class="carousel-dots">
+      <label class="dot" for="s1" aria-label="Photo 1"></label>
+      <label class="dot" for="s2" aria-label="Photo 2"></label>
+      <label class="dot" for="s3" aria-label="Photo 3"></label>
+      <label class="dot" for="s4" aria-label="Photo 4"></label>
+      <label class="dot" for="s5" aria-label="Photo 5"></label>
+    </div>
+  </div>
+</section>
+
 
   <!-- Blog -->
   <section id="blog">
