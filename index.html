@@ -1,3 +1,5 @@
+Exemple complet corrigé
+html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,16 +10,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
 
   <style>
-    /* ------------------------------
-       RESET + BASE
-    ------------------------------ */
     body {
       margin: 0;
       padding: 0;
       font-family: 'Roboto', sans-serif;
       background-color: #fdf6e3;
       color: #1c1c1c;
-      transition: background 0.3s, color 0.3s;
     }
 
     h1, h2, h3 {
@@ -25,18 +23,14 @@
       text-transform: uppercase;
     }
 
-    a {
-      text-decoration: none;
-    }
+    a { text-decoration: none; }
 
-    /* ------------------------------
-       NAVBAR
-    ------------------------------ */
     .navbar {
       position: fixed;
       top: 0;
       width: 100%;
-      padding: 15px 0;
+      height: 60px; /* hauteur fixe */
+      padding: 10px 0;
       background: rgba(0,0,0,0.4);
       backdrop-filter: blur(6px);
       color: white;
@@ -47,9 +41,9 @@
       max-width: 1200px;
       margin: auto;
       display: flex;
-      justify-content: center; /* ✅ centre le contenu */
+      justify-content: center;
       align-items: center;
-      gap: 40px; /* espace entre logo, liens et bouton */
+      gap: 40px;
       padding: 0 20px;
     }
 
@@ -74,9 +68,7 @@
       transition: 0.3s;
     }
 
-    .nav-links a:hover {
-      color: #ff7f11;
-    }
+    .nav-links a:hover { color: #ff7f11; }
 
     #darkToggle {
       background: none;
@@ -94,13 +86,12 @@
       color: black;
     }
 
-    /* ------------------------------
-       HERO BANNER
-    ------------------------------ */
+    /* HERO corrigé */
     .hero {
       position: relative;
       width: 100%;
-      height: 100vh;
+      height: calc(100vh - 60px);
+      margin-top: 60px;
       overflow: hidden;
       background: black;
     }
@@ -108,8 +99,8 @@
     .hero-img {
       width: 100%;
       height: 100%;
-      object-fit: cover;   /* ✅ remplissage correct */
-      object-position: center; /* ✅ centré */
+      object-fit: cover;
+      object-position: center;
       background-color: black;
     }
 
@@ -126,7 +117,6 @@
 
 <body>
 
-<!-- ✅ NAVBAR -->
 <nav class="navbar">
   <div class="navbar-container">
     <div class="nav-logo">ALLEZZOU RAID</div>
@@ -141,10 +131,11 @@
   </div>
 </nav>
 
-<!-- ✅ HERO -->
 <section class="hero">
   <img src="https://i.imgur.com/GzzBPnZ.png" class="hero-img">
   <div class="hero-gradient"></div>
 </section>
+
+</body>
 
    
