@@ -17,6 +17,7 @@
       font-family: 'Roboto', sans-serif;
       background-color: #fdf6e3;
       color: #1c1c1c;
+      transition: background 0.3s, color 0.3s;
     }
 
     h1, h2, h3 {
@@ -29,27 +30,61 @@
     }
 
     /* ------------------------------
+       DARK MODE
+    ------------------------------ */
+    .dark-mode {
+      background-color: #111;
+      color: #eee;
+    }
+
+    .dark-mode section {
+      background-color: #111;
+    }
+
+    .dark-mode .navbar {
+      background: rgba(0,0,0,0.8);
+    }
+
+    .dark-mode .btn {
+      background: #ff7f11;
+    }
+
+    /* ------------------------------
        NAVBAR
     ------------------------------ */
     .navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 15px 0;
-  background: rgba(0,0,0,0.4);
-  backdrop-filter: blur(6px);
-  color: white;
-  z-index: 1000;
-}
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 15px 0;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(6px);
+      color: white;
+      z-index: 1000;
+    }
 
-.navbar-container {
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-}
+    .navbar-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .nav-logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
 
     .nav-links a {
       color: white;
@@ -62,6 +97,22 @@
       color: #ff7f11;
     }
 
+    #darkToggle {
+      background: none;
+      border: 2px solid white;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Oswald';
+      transition: 0.3s;
+    }
+
+    #darkToggle:hover {
+      background: white;
+      color: black;
+    }
+
     /* ------------------------------
        HERO BANNER
     ------------------------------ */
@@ -70,14 +121,15 @@
       width: 100%;
       height: 100vh;
       overflow: hidden;
+      background: black;
     }
 
     .hero-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* montre toute l’image */
-  background-color: black; /* bandes noires propres */
-}
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background-color: black;
+    }
 
     .hero-gradient {
       position: absolute;
@@ -139,6 +191,20 @@
     }
 
     /* ------------------------------
+       SCROLL ANIMATION
+    ------------------------------ */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: 0.8s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ------------------------------
        GALERIE
     ------------------------------ */
     .gallery-grid {
@@ -193,6 +259,43 @@
     }
 
     /* ------------------------------
+       PARTENAIRES
+    ------------------------------ */
+    .partners-grid {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .partners-grid img {
+      height: 80px;
+      object-fit: contain;
+      filter: grayscale(100%);
+      transition: 0.3s;
+    }
+
+    .partners-grid img:hover {
+      filter: grayscale(0%);
+    }
+
+    /* ------------------------------
+       FORMULAIRE
+    ------------------------------ */
+    .register-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .register-form input,
+    .register-form textarea {
+      padding: 12px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    /* ------------------------------
        FOOTER
     ------------------------------ */
     footer {
@@ -201,6 +304,11 @@
       text-align: center;
       padding: 20px;
       margin-top: 40px;
+    }
+
+    .socials a {
+      margin: 0 10px;
+      color: #ff7f11;
     }
   </style>
 </head>
@@ -218,6 +326,7 @@
       <li><a href="#partners">Partenaires</a></li>
       <li><a href="#register">Inscriptions</a></li>
     </ul>
+    <button id="darkToggle">🌙</button>
   </div>
 </nav>
 
@@ -228,14 +337,14 @@
 </section>
 
 <!-- ✅ INTRO -->
-<section class="intro">
+<section class="intro fade-in">
   <h1>ALLEZZOU RAID 2026</h1>
   <p>Un rallye-raid unique entre dunes, navigation et aventure humaine.</p>
   <a href="#register" class="btn">S'inscrire</a>
 </section>
 
 <!-- ✅ ABOUT -->
-<section id="about">
+<section id="about" class="fade-in">
   <h2>À propos du rallye</h2>
   <p>
     Le ALLEZZOU RAID est un événement sportif unique mêlant aventure, navigation et esprit d’équipe.
@@ -243,7 +352,7 @@
 </section>
 
 <!-- ✅ GALERIE -->
-<section id="gallery">
+<section id="gallery" class="fade-in">
   <h2>Galerie</h2>
 
   <div class="gallery-grid">
@@ -252,48 +361,3 @@
     <img src="https://i.imgur.com/pcqXzPp.jpg">
     <img src="https://i.imgur.com/GzzBPnZ.png">
     <img src="https://i.imgur.com/wrYns3E.jpg">
-    <img src="https://i.imgur.com/X7hL3Wm.jpg">
-    <img src="https://i.imgur.com/ezGKwub.jpg">
-    <img src="https://i.imgur.com/Z6uotuB.jpg">
-    <img src="https://i.imgur.com/Nw9wAK3.jpg">
-    <img src="https://i.imgur.com/nV4ll6I.jpg">
-  </div>
-</section>
-
-<!-- ✅ ÉQUIPE -->
-<section id="team">
-  <h2>Équipe</h2>
-
-  <div class="team-grid">
-    <div class="team-card">
-      <img src="https://i.imgur.com/mkv3shD.jpg">
-      <h3>Nom 1</h3>
-      <p>Rôle / Fonction</p>
-    </div>
-
-    <div class="team-card">
-      <img src="https://i.imgur.com/dP5RvT8.jpg">
-      <h3>Nom 2</h3>
-      <p>Rôle / Fonction</p>
-    </div>
-
-    <div class="team-card">
-      <img src="https://i.imgur.com/pcqXzPp.jpg">
-      <h3>Nom 3</h3>
-      <p>Rôle / Fonction</p>
-    </div>
-  </div>
-</section>
-
-<!-- ✅ INSCRIPTIONS -->
-<section id="register">
-  <h2>Inscriptions</h2>
-  <p>Formulaire d’inscription bientôt disponible.</p>
-</section>
-
-<footer>
-  <p>© 2026 ALLEZZOU RAID</p>
-</footer>
-
-</body>
-</html>
