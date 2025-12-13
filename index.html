@@ -23,18 +23,17 @@
 
     /* Intro */
     .intro {
-      margin-top:30px;
+      margin-top:100px;
       text-align:center;
       background:url("https://i.imgur.com/GzzBPnZ.png") no-repeat center center;
       background-size:cover;
       border-bottom:3px solid #e63946;
       color:#fff;
       position:relative;
-      padding:100px 20px;
+      padding:60px 20px;
     }
     .intro::after {
-      content:"";
-      position:absolute; left:0; right:0; bottom:0; top:0;
+      content:""; position:absolute; inset:0;
       background:linear-gradient(to top,rgba(0,0,0,0.6),transparent);
     }
     .intro h1, .intro p, .intro .btn { position:relative; z-index:1; }
@@ -49,24 +48,29 @@
     section { max-width:1100px; margin:0 auto; padding:60px 20px; }
     section h2 { color:#e63946; margin-bottom:20px; }
 
-    /* Carrousel CSS */
+    /* Carrousel CSS (radio + dots) */
     .carousel { position:relative; max-width:900px; margin:auto; }
-    .carousel-viewport { overflow:hidden; border-radius:10px; }
+    .carousel-viewport { overflow:hidden; border-radius:10px; position:relative; z-index:1; }
     .carousel-track { display:flex; width:500%; transition:transform 0.6s ease; }
     .carousel-slide { min-width:100%; height:400px; }
     .carousel-slide img { width:100%; height:100%; object-fit:cover; display:block; }
-
-    /* Radios */
-    input[name="slide"] { display:none; }
+    /* radios */
+    .carousel input[type="radio"] { display:none; }
+    /* positions */
     #s1:checked ~ .carousel-viewport .carousel-track { transform:translateX(0%); }
     #s2:checked ~ .carousel-viewport .carousel-track { transform:translateX(-100%); }
     #s3:checked ~ .carousel-viewport .carousel-track { transform:translateX(-200%); }
     #s4:checked ~ .carousel-viewport .carousel-track { transform:translateX(-300%); }
     #s5:checked ~ .carousel-viewport .carousel-track { transform:translateX(-400%); }
-
-    /* Points */
-    .carousel-dots { display:flex; justify-content:center; gap:10px; margin-top:12px; }
-    .dot { width:12px; height:12px; border-radius:50%; background:#bbb; cursor:pointer; }
+    /* dots */
+    .carousel-dots {
+      display:flex; justify-content:center; gap:10px; margin-top:12px;
+      position:relative; z-index:2; /* au-dessus de la viewport */
+    }
+    .carousel-dots label {
+      width:12px; height:12px; border-radius:50%; background:#bbb; cursor:pointer;
+      display:inline-block;
+    }
     #s1:checked ~ .carousel-dots label[for="s1"],
     #s2:checked ~ .carousel-dots label[for="s2"],
     #s3:checked ~ .carousel-dots label[for="s3"],
@@ -117,7 +121,8 @@
 
   <!-- Intro -->
   <section class="intro">
-    <h1>RAID 2026</h1>
+    <h1></h1>
+    <p>.</p>
     <p>.</p>
     <a href="#about" class="btn">Découvrir</a>
   </section>
@@ -125,7 +130,7 @@
   <!-- À propos -->
   <section id="about">
     <h2>À propos du rallye</h2>
-    <p>Le M'Hamid Express est un événement sportif mêlant aventure, navigation et esprit d’équipe.Un rallye-raid unique entre dunes, navigation et aventure humaine.  Partager avec la Team ALLEZZOU Team.</p>
+    <p>Un rallye-raid unique entre dunes, navigation et aventure humaine. Le M'Hamid Express est un événement sportif mêlant aventure, navigation et esprit d’équipe. Partager avec la ALLEZZOU Team ce moment unique.</p>
   </section>
 
   <!-- Équipe -->
@@ -149,7 +154,7 @@
   <section id="gallery">
     <h2>Galerie</h2>
     <div class="carousel">
-      <!-- Radios -->
+      <!-- Radios (doivent être au même niveau que viewport et dots) -->
       <input type="radio" name="slide" id="s1" checked>
       <input type="radio" name="slide" id="s2">
       <input type="radio" name="slide" id="s3">
@@ -167,13 +172,13 @@
         </div>
       </div>
 
-      <!-- Points -->
+      <!-- Points (labels cliquables) -->
       <div class="carousel-dots">
-        <label class="dot" for="s1" aria-label="Aller à la photo 1"></label>
-        <label class="dot" for="s2" aria-label="Aller à la photo 2"></label>
-        <label class="dot" for="s3" aria-label="Aller à la photo 3"></label>
-        <label class="dot" for="s4" aria-label="Aller à la photo 4"></label>
-        <label class="dot" for="s5" aria-label="Aller à la photo 5"></label>
+        <label class="dot" for="s1" aria-label="Photo 1"></label>
+        <label class="dot" for="s2" aria-label="Photo 2"></label>
+        <label class="dot" for="s3" aria-label="Photo 3"></label>
+        <label class="dot" for="s4" aria-label="Photo 4"></label>
+        <label class="dot" for="s5" aria-label="Photo 5"></label>
       </div>
     </div>
   </section>
@@ -215,7 +220,7 @@
     </div>
   </section>
 
-  <!-- Sections détaillées des jours (exemples vides, à compléter) -->
+  <!-- Sections détaillées des jours (placeholders) -->
   <section id="jour1"><h2>Jour 1 – Départ de Mhamid</h2><p>Contenu complet à ajouter.</p></section>
   <section id="jour2"><h2>Jour 2 – Dunes et navigation</h2><p>Contenu complet à ajouter.</p></section>
   <section id="jour3"><h2>Jour 3 – Étape marathon</h2><p>Contenu complet à ajouter.</p></section>
