@@ -21,7 +21,7 @@
     .nav-links a { color:#fff; font-family:'Oswald'; }
     .nav-links a:hover { color:#ff7f11; }
 
-    /* Intro avec image en fond */
+    /* Intro */
     .intro {
       margin-top:100px;
       text-align:center;
@@ -37,31 +37,30 @@
       position:absolute; left:0; right:0; bottom:0; top:0;
       background:linear-gradient(to top,rgba(0,0,0,0.6),transparent);
     }
-    .intro h1, .intro p, .intro .btn {
-      position:relative;
-      z-index:1;
-    }
-    .btn { display:inline-block; margin-top:20px; padding:12px 25px;
+    .intro h1, .intro p, .intro .btn { position:relative; z-index:1; }
+    .btn {
+      display:inline-block; margin-top:20px; padding:12px 25px;
       background:#e63946; color:#fff; font-weight:bold; border-radius:5px;
-      font-family:'Oswald'; transition:0.3s; }
+      font-family:'Oswald'; transition:0.3s;
+    }
     .btn:hover { background:#000; }
 
     /* Sections */
     section { max-width:1100px; margin:0 auto; padding:60px 20px; }
     section h2 { color:#e63946; margin-bottom:20px; }
 
-    /* Carousel */
-    .carousel { position:relative; max-width:900px; margin:auto; overflow:hidden; border-radius:10px; }
-    .carousel-track { display:flex; transition:transform 0.5s ease-in-out; }
-    .carousel img { min-width:100%; height:500px; object-fit:cover; display:block; }
-    .carousel-btn {
-      position:absolute; top:50%; transform:translateY(-50%);
-      background:rgba(0,0,0,0.5); border:none; color:#fff; font-size:2rem;
-      padding:8px 12px; cursor:pointer; border-radius:50%;
+    /* Galerie statique */
+    .gallery-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
     }
-    .carousel-btn.prev { left:15px; }
-    .carousel-btn.next { right:15px; }
-    .carousel-btn:hover { background:rgba(0,0,0,0.8); }
+    .gallery-grid img {
+      width:100%;
+      height:300px;
+      object-fit:cover;
+      border-radius:10px;
+    }
 
     /* Blog */
     .blog-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px; }
@@ -72,35 +71,17 @@
     /* Équipe */
     #team { text-align:center; }
     .team-row {
-      display:flex;
-      justify-content:center;
-      gap:30px;
-      flex-wrap:wrap;
-      margin-top:30px;
+      display:flex; justify-content:center; gap:30px; flex-wrap:wrap; margin-top:30px;
     }
     .team-member {
-      background:#fff;
-      padding:20px;
-      border-radius:10px;
-      text-align:center;
-      width:200px;
-      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+      background:#fff; padding:20px; border-radius:10px; text-align:center;
+      width:200px; box-shadow:0 4px 10px rgba(0,0,0,0.1);
     }
     .team-member img {
-      width:150px;
-      height:150px;
-      object-fit:cover;
-      border-radius:50%;
-      margin-bottom:15px;
+      width:150px; height:150px; object-fit:cover; border-radius:50%; margin-bottom:15px;
     }
-    .team-member h3 {
-      margin:10px 0;
-      color:#e63946;
-    }
-    .team-member p {
-      color:#444;
-      font-size:0.9rem;
-    }
+    .team-member h3 { margin:10px 0; color:#e63946; }
+    .team-member p { color:#444; font-size:0.9rem; }
 
     /* Footer */
     footer { background:#1c1c1c; color:#fff; text-align:center; padding:20px; margin-top:40px; }
@@ -119,7 +100,7 @@
     </ul>
   </nav>
 
-  <!-- Intro avec image en fond -->
+  <!-- Intro -->
   <section class="intro">
     <h1>ALLEZZOU RAID 2026</h1>
     <p>Un rallye-raid unique entre dunes, navigation et aventure humaine.</p>
@@ -131,20 +112,32 @@
     <h2>À propos du rallye</h2>
     <p>Le ALLEZZOU RAID est un événement sportif mêlant aventure, navigation et esprit d’équipe.</p>
   </section>
-
+  
+  <!-- Équipe -->
+  <section id="team">
+    <h2>Notre équipe</h2>
+    <div class="team-row">
+      <div class="team-member">
+        <img src="https://i.imgur.com/mkv3shD.jpg" alt="Pilote">
+        <h3>Pilote</h3>
+        <p>Spécialiste des dunes, passionné de navigation.</p>
+      </div>
+      <div class="team-member">
+        <img src="https://i.imgur.com/dP5RvT8.jpg" alt="Copilote">
+        <h3>Copilote</h3>
+        <p>Expert en roadbook et GPS.</p>
+         </div>
+  </section>
+  
   <!-- Galerie -->
   <section id="gallery">
     <h2>Galerie</h2>
-    <div class="carousel">
-      <div class="carousel-track">
-        <img src="https://i.imgur.com/mkv3shD.jpg" alt="Photo 1">
-        <img src="https://i.imgur.com/dP5RvT8.jpg" alt="Photo 2">
-        <img src="https://i.imgur.com/pcqXzPp.jpg" alt="Photo 3">
-        <img src="https://i.imgur.com/GzzBPnZ.png" alt="Photo 4">
-        <img src="https://i.imgur.com/wrYns3E.jpg" alt="Photo 5">
-      </div>
-      <button class="carousel-btn prev">❮</button>
-      <button class="carousel-btn next">❯</button>
+    <div class="gallery-grid">
+      <img src="https://i.imgur.com/mkv3shD.jpg" alt="Photo 1">
+      <img src="https://i.imgur.com/dP5RvT8.jpg" alt="Photo 2">
+      <img src="https://i.imgur.com/pcqXzPp.jpg" alt="Photo 3">
+      <img src="https://i.imgur.com/GzzBPnZ.png" alt="Photo 4">
+      <img src="https://i.imgur.com/wrYns3E.jpg" alt="Photo 5">
     </div>
   </section>
 
@@ -182,6 +175,27 @@
         <p>Les équipes franchissent la ligne d’arrivée, célébrant une aventure humaine et sportive unique.</p>
         <a href="#jour6" class="btn">Lire plus</a>
       </article>
+    </div>
+  </section>
 
-    </body>
-    </htlm>
+  <!-- Équipe -->
+  <section id="team">
+    <h2>Notre équipe</h2>
+    <div class="team-row">
+      <div class="team-member">
+        <img src="https://i.imgur.com/mkv3shD.jpg" alt="Pilote">
+        <h3>Pilote</h3>
+        <p>Spécialiste des dunes, passionné de navigation.</p>
+      </div>
+      <div class="team-member">
+        <img src="https://i.imgur.com/dP5RvT8.jpg" alt="Copilote">
+        <h3>Copilote</h3>
+        <p>Expert en roadbook et GPS.</p>
+         </div>
+  </section>
+  <!-- Footer -->
+  <footer>
+    © 2026 ALLEZZOU RAID — Tous droits réservés
+  </footer>
+</body>
+        </html>
