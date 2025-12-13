@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rallye-Raid M'Hamid Express 2026</title>
+  <title>ALLEZZOU RAID</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
 
@@ -20,7 +20,7 @@
     .hero {
       position: relative;
       width: 100%;
-      height: 100vh; /* plein écran */
+      height: 100vh;
       overflow: hidden;
     }
 
@@ -28,30 +28,32 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: brightness(70%);
     }
 
-    .hero-content {
+    .hero-gradient {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40%;
+      background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    }
+
+    /* ✅ INTRO TEXTE */
+    .intro {
       text-align: center;
-      color: white;
-      text-shadow: 0 0 10px black;
+      padding: 60px 20px;
     }
 
-    .hero-content h1 {
-      font-size: 4rem;
-      font-weight: 900;
-      letter-spacing: 3px;
+    .intro h1 {
+      font-size: 3rem;
       font-family: 'Oswald', sans-serif;
-      margin: 0;
+      margin-bottom: 10px;
     }
 
-    .hero-content p {
-      font-size: 1.5rem;
-      margin-top: 10px;
+    .intro p {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
     }
 
     .btn {
@@ -85,22 +87,6 @@
       text-transform: uppercase;
     }
 
-    .program ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .program li {
-      background: #ffe8d6;
-      margin: 10px 0;
-      padding: 15px;
-      border-radius: 5px;
-    }
-
-    a {
-      color: #0077b6;
-    }
-
     footer {
       background: #1c1c1c;
       color: white;
@@ -112,98 +98,55 @@
       color: #ff7f11;
       text-decoration: none;
     }
-.hero {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.hero-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.hero-gradient {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 40%;
-  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
-}  
   </style>
 </head>
 
 <body>
 
-<!-- ✅ HERO BANNER (image seule) -->
+<!-- ✅ HERO BANNER -->
 <section class="hero">
   <img src="https://i.imgur.com/GzzBPnZ.png" alt="Bannière ALLEZZOU RAID" class="hero-img">
   <div class="hero-gradient"></div>
 </section>
+
+<!-- ✅ INTRO TEXTE (ne cache plus l’image) -->
 <section class="intro">
   <h1>ALLEZZOU RAID</h1>
   <p>L’aventure commence ici</p>
-  <a href="#rallye" class="btn">Découvrir le rallye</a>
+  <a href="#about" class="btn">Découvrir le rallye</a>
 </section>
-
-<header>
-  <h1>Rallye-Raid M'Hamid Express 2026</h1>
-  <p>25–30 January 2026 | M’Hamid El Ghizlane, Zagora, Morocco</p>
-  <a href="#program" class="btn">View Program</a>
-  <a href="#updates" class="btn">Follow Live Updates</a>
-</header>
 
 <section id="about">
-  <h2>About the Rally</h2>
+  <h2>À propos du rallye</h2>
   <p>
-    The M’Hamid Express is a legendary rally-raid event in the Draa-Tafilalet region.
-    Known for its challenging desert tracks, breathtaking dunes, and vibrant community atmosphere,
-    it brings together sports fans, car enthusiasts, friends, and families for an unforgettable adventure.
+    Le ALLEZZOU RAID est un événement sportif unique mêlant aventure, navigation et esprit d’équipe.
   </p>
 </section>
 
-<section id="program" class="program">
-  <h2>Event Program</h2>
-  <ul>
-    <li><strong>Jan 25:</strong> Opening ceremony, scrutineering, prologue stage</li>
-    <li><strong>Jan 26–29:</strong> Rally stages across dunes and desert tracks</li>
-    <li><strong>Jan 30:</strong> Final stage, awards ceremony, closing party</li>
-  </ul>
-  <p>👉 Full program available on the 
-    <a href="https://rallyemhamidexpress.fr/2025/06/m-hamid-express-2026-du-25-au-30-janvier-programme-fiche-d-inscription-tarif-et-nouveautes.html" target="_blank">
-      official site
-    </a>.
-  </p>
-</section>
-
-<section id="updates">
-  <h2>Live Blog & Updates</h2>
-  <p>
-    Follow daily stage results, photos, and highlights here. Stay connected with the community using 
-    <strong>#MHamidExpress2026</strong> on social media.
-  </p>
+<section id="program">
+  <h2>Programme</h2>
+  <p>Le programme détaillé arrive bientôt.</p>
 </section>
 
 <section id="gallery">
-  <h2>Gallery</h2>
-  <p>Explore stunning shots from past editions and teasers for 2026.</p>
+  <h2>Galerie</h2>
+  <p>Les photos seront ajoutées ici.</p>
 </section>
 
-<section id="info">
-  <h2>Visitor Info</h2>
-  <p>
-    Plan your trip to M’Hamid El Ghizlane: discover local accommodations, desert camps, and cultural attractions in Zagora.
-  </p>
+<section id="team">
+  <h2>Équipe & Partenaires</h2>
+  <p>Section en construction.</p>
+</section>
+
+<section id="register">
+  <h2>Inscriptions</h2>
+  <p>Formulaire d’inscription bientôt disponible.</p>
 </section>
 
 <footer>
-  <p>Stay connected via official social media channels | 
-    <a href="mailto:info@rallyemhamidexpress.fr">Contact Us</a>
-  </p>
+  <p>© 2026 ALLEZZOU RAID</p>
 </footer>
 
 </body>
 </html>
+
