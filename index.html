@@ -23,13 +23,13 @@
 
     /* Intro */
     .intro {
-      margin-top:100px;
+      margin-top:150px;
       text-align:center;
       background:url("https://i.imgur.com/GzzBPnZ.png") no-repeat center center;
       background-size:cover;
       border-bottom:3px solid #e63946;
       color:#fff;
-      position:contain;
+      position:relative;
       padding:60px 20px;
     }
     .intro::after {
@@ -49,39 +49,25 @@
     section h2 { color:#e63946; margin-bottom:20px; }
 
     /* Carrousel CSS (radio + dots) */
-    .carousel { position:relative; max-width:900px; margin:auto; }
-.carousel-viewport { overflow:hidden; border-radius:10px; position:relative; z-index:1; }
-.carousel-track { display:flex; width:500%; transition:transform 0.6s ease; }
-.carousel-slide { min-width:100%; height:400px; }
-.carousel-slide img {
-  width:100%;
-  height:100%;
-  object-fit:cover;   /* recadrage pour remplir le cadre */
-  display:block;
-}
+   .carousel { max-width:600px; margin:auto; }
+.carousel-viewport { overflow:hidden; }
+.carousel-track { display:flex; width:300%; transition:transform 0.6s ease; }
+.carousel-slide { min-width:100%; height:300px; }
+.carousel-slide img { width:100%; height:100%; object-fit:cover; }
 
 /* Radios */
 .carousel input[type="radio"] { display:none; }
 #s1:checked ~ .carousel-viewport .carousel-track { transform:translateX(0%); }
 #s2:checked ~ .carousel-viewport .carousel-track { transform:translateX(-100%); }
 #s3:checked ~ .carousel-viewport .carousel-track { transform:translateX(-200%); }
-#s4:checked ~ .carousel-viewport .carousel-track { transform:translateX(-300%); }
-#s5:checked ~ .carousel-viewport .carousel-track { transform:translateX(-400%); }
 
 /* Points */
-.carousel-dots {
-  display:flex; justify-content:center; gap:10px; margin-top:12px;
-  position:relative; z-index:2;
-}
-.carousel-dots label {
-  width:12px; height:12px; border-radius:50%; background:#bbb; cursor:pointer;
-  display:inline-block;
-}
+.carousel-dots { display:flex; justify-content:center; gap:10px; margin-top:10px; }
+.dot { width:12px; height:12px; border-radius:50%; background:#bbb; cursor:pointer; }
 #s1:checked ~ .carousel-dots label[for="s1"],
 #s2:checked ~ .carousel-dots label[for="s2"],
-#s3:checked ~ .carousel-dots label[for="s3"],
-#s4:checked ~ .carousel-dots label[for="s4"],
-#s5:checked ~ .carousel-dots label[for="s5"] { background:#e63946; }
+#s3:checked ~ .carousel-dots label[for="s3"] { background:#e63946; }
+
 
 
     /* Équipe */
@@ -165,8 +151,6 @@
     <input type="radio" name="slide" id="s1" checked>
     <input type="radio" name="slide" id="s2">
     <input type="radio" name="slide" id="s3">
-    <input type="radio" name="slide" id="s4">
-    <input type="radio" name="slide" id="s5">
 
     <!-- Vue -->
     <div class="carousel-viewport">
@@ -174,22 +158,17 @@
         <div class="carousel-slide"><img src="https://i.imgur.com/mkv3shD.jpg" alt="Photo 1"></div>
         <div class="carousel-slide"><img src="https://i.imgur.com/dP5RvT8.jpg" alt="Photo 2"></div>
         <div class="carousel-slide"><img src="https://i.imgur.com/pcqXzPp.jpg" alt="Photo 3"></div>
-        <div class="carousel-slide"><img src="https://i.imgur.com/GzzBPnZ.png" alt="Photo 4"></div>
-        <div class="carousel-slide"><img src="https://i.imgur.com/wrYns3E.jpg" alt="Photo 5"></div>
       </div>
     </div>
 
     <!-- Points -->
     <div class="carousel-dots">
-      <label class="dot" for="s1" aria-label="Photo 1"></label>
-      <label class="dot" for="s2" aria-label="Photo 2"></label>
-      <label class="dot" for="s3" aria-label="Photo 3"></label>
-      <label class="dot" for="s4" aria-label="Photo 4"></label>
-      <label class="dot" for="s5" aria-label="Photo 5"></label>
+      <label for="s1" class="dot"></label>
+      <label for="s2" class="dot"></label>
+      <label for="s3" class="dot"></label>
     </div>
   </div>
 </section>
-
 
   <!-- Blog -->
   <section id="blog">
