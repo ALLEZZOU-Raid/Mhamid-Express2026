@@ -21,29 +21,34 @@
     .nav-links a { color:#fff; font-family:'Oswald'; }
     .nav-links a:hover { color:#ff7f11; }
 
-    /* Hero */
-    .hero {
-  margin-top: 60px;
-  height: calc(100vh - 60px); /* occupe tout l’écran sauf la navbar */
-  position: relative;
-  background: url("https://i.imgur.com/GzzBPnZ.png") no-repeat center center;
-  background-size: contain; /* affiche l’image entière sans la couper */
-  background-color: #000;   /* couleur de fond pour combler les bandes vides */
-  overflow: hidden;
-}
-    .hero-gradient {
-      position:absolute; left:0; right:0; bottom:0; height:40%;
+    /* Intro avec image en fond */
+    .intro {
+      margin-top:60px;
+      text-align:center;
+      background:url("https://i.imgur.com/GzzBPnZ.png") no-repeat center center;
+      background-size:cover;
+      border-bottom:3px solid #e63946;
+      color:#fff;
+      position:relative;
+      padding:100px 20px; /* plus d’espace pour l’effet hero */
+    }
+    .intro::after {
+      content:"";
+      position:absolute; left:0; right:0; bottom:0; top:0;
       background:linear-gradient(to top,rgba(0,0,0,0.6),transparent);
     }
-
-    /* Sections */
-    section { max-width:1100px; margin:0 auto; padding:60px 20px; }
-    section h2 { color:#e63946; margin-bottom:20px; }
-    .intro { text-align:center; background:#fff; border-bottom:3px solid #e63946; }
+    .intro h1, .intro p, .intro .btn {
+      position:relative;
+      z-index:1;
+    }
     .btn { display:inline-block; margin-top:20px; padding:12px 25px;
       background:#e63946; color:#fff; font-weight:bold; border-radius:5px;
       font-family:'Oswald'; transition:0.3s; }
     .btn:hover { background:#000; }
+
+    /* Sections */
+    section { max-width:1100px; margin:0 auto; padding:60px 20px; }
+    section h2 { color:#e63946; margin-bottom:20px; }
 
     /* Carousel */
     .carousel { position:relative; max-width:900px; margin:auto; overflow:hidden; border-radius:10px; }
@@ -80,12 +85,7 @@
     </ul>
   </nav>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-gradient"></div>
-  </section>
-
-  <!-- Intro -->
+  <!-- Intro avec image en fond -->
   <section class="intro">
     <h1>ALLEZZOU RAID 2026</h1>
     <p>Un rallye-raid unique entre dunes, navigation et aventure humaine.</p>
@@ -120,62 +120,4 @@
     <div class="blog-grid">
       <article class="blog-post">
         <h3>Jour 1 – Départ de Mhamid</h3>
-        <p>Les équipes se sont élancées ce matin. Le désert s’annonce exigeant, l’ambiance est incroyable.</p>
-        <a href="#" class="btn">Lire plus</a>
-      </article>
-      <article class="blog-post">
-        <h3>Jour 2 – Dunes et navigation</h3>
-        <p>Premières grandes dunes franchies. Navigation au GPS et entraide au rendez-vous.</p>
-        <a href="#" class="btn">Lire plus</a>
-      </article>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    © 2026 ALLEZZOU RAID — Tous droits réservés
-  </footer>
-
-  <!-- Script carrousel avec auto-défilement -->
-  <script>
-    const track = document.querySelector('.carousel-track');
-    const slides = Array.from(track.children);
-    const prevButton = document.querySelector('.carousel-btn.prev');
-    const nextButton = document.querySelector('.carousel-btn.next');
-    let currentIndex = 0;
-
-    function updateCarousel() {
-      const slideWidth = slides[0].getBoundingClientRect().width;
-      track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-    }
-
-    function showNextSlide() {
-      currentIndex = (currentIndex + 1) % slides.length;
-      updateCarousel();
-    }
-
-    function showPrevSlide() {
-      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-      updateCarousel();
-    }
-
-    nextButton.addEventListener('click', showNextSlide);
-    prevButton.addEventListener('click', showPrevSlide);
-
-    window.addEventListener('resize', updateCarousel);
-    updateCarousel();
-
-    // Auto-défilement toutes les 5 secondes
-    let autoSlide = setInterval(showNextSlide, 5000);
-
-    // Pause auto-défilement au survol
-    const carousel = document.querySelector('.carousel');
-    carousel.addEventListener('mouseenter', () => clearInterval(autoSlide));
-    carousel.addEventListener('mouseleave', () => {
-      autoSlide = setInterval(showNextSlide, 5000);
-    });
-  </script>
-
-</body>
-</html>
-
+        <p>Les équipes se sont élancées ce matin. Le désert
