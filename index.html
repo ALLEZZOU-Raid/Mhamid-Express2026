@@ -23,13 +23,9 @@
 
     /* Hero */
     .hero {
-      margin-top:60px;
-      height:calc(100vh - 60px);
-      position:relative;
-      background:url("https://i.imgur.com/GzzBPnZ.png") no-repeat center center;
-      background-size:cover; /* plein écran immersif */
-      overflow:hidden;
-    }
+  background: url("https://i.imgur.com/GzzBPnZ.png") no-repeat center center;
+  background-size: contain; /* affiche l’image entière */
+}
     .hero-gradient {
       position:absolute; left:0; right:0; bottom:0; height:40%;
       background:linear-gradient(to top,rgba(0,0,0,0.6),transparent);
