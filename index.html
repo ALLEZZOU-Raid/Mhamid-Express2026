@@ -49,18 +49,37 @@
     section { max-width:1100px; margin:0 auto; padding:60px 20px; }
     section h2 { color:#e63946; margin-bottom:20px; }
 
-    /* Galerie statique */
-    .gallery-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:20px;
-    }
-    .gallery-grid img {
-      width:100%;
-      height:300px;
-      object-fit:cover;
-      border-radius:10px;
-    }
+    /* Carrousel CSS */
+    .carousel { position:relative; max-width:900px; margin:auto; }
+    .carousel-viewport { overflow:hidden; border-radius:10px; }
+    .carousel-track { display:flex; width:500%; transition:transform 0.6s ease; }
+    .carousel-slide { min-width:100%; height:400px; }
+    .carousel-slide img { width:100%; height:100%; object-fit:cover; display:block; }
+
+    /* Radios */
+    input[name="slide"] { display:none; }
+    #s1:checked ~ .carousel-viewport .carousel-track { transform:translateX(0%); }
+    #s2:checked ~ .carousel-viewport .carousel-track { transform:translateX(-100%); }
+    #s3:checked ~ .carousel-viewport .carousel-track { transform:translateX(-200%); }
+    #s4:checked ~ .carousel-viewport .carousel-track { transform:translateX(-300%); }
+    #s5:checked ~ .carousel-viewport .carousel-track { transform:translateX(-400%); }
+
+    /* Points */
+    .carousel-dots { display:flex; justify-content:center; gap:10px; margin-top:12px; }
+    .dot { width:12px; height:12px; border-radius:50%; background:#bbb; cursor:pointer; }
+    #s1:checked ~ .carousel-dots label[for="s1"],
+    #s2:checked ~ .carousel-dots label[for="s2"],
+    #s3:checked ~ .carousel-dots label[for="s3"],
+    #s4:checked ~ .carousel-dots label[for="s4"],
+    #s5:checked ~ .carousel-dots label[for="s5"] { background:#e63946; }
+
+    /* Équipe */
+    #team { text-align:center; }
+    .team-row { display:flex; justify-content:center; gap:30px; flex-wrap:wrap; margin-top:30px; }
+    .team-member { background:#fff; padding:20px; border-radius:10px; text-align:center; width:200px; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+    .team-member img { width:150px; height:150px; object-fit:cover; border-radius:50%; margin-bottom:15px; }
+    .team-member h3 { margin:10px 0; color:#e63946; }
+    .team-member p { color:#444; font-size:0.9rem; }
 
     /* Blog */
     .blog-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px; }
@@ -68,23 +87,19 @@
     .blog-post h3 { margin-top:0; color:#e63946; }
     .blog-post p { color:#444; margin-bottom:15px; }
 
-    /* Équipe */
-    #team { text-align:center; }
-    .team-row {
-      display:flex; justify-content:center; gap:30px; flex-wrap:wrap; margin-top:30px;
-    }
-    .team-member {
-      background:#fff; padding:20px; border-radius:10px; text-align:center;
-      width:200px; box-shadow:0 4px 10px rgba(0,0,0,0.1);
-    }
-    .team-member img {
-      width:150px; height:150px; object-fit:cover; border-radius:50%; margin-bottom:15px;
-    }
-    .team-member h3 { margin:10px 0; color:#e63946; }
-    .team-member p { color:#444; font-size:0.9rem; }
-
     /* Footer */
     footer { background:#1c1c1c; color:#fff; text-align:center; padding:20px; margin-top:40px; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .intro { padding:60px 15px; }
+      .intro h1 { font-size:1.8rem; }
+      .carousel-slide { height:250px; }
+      .team-row { flex-direction:column; align-items:center; }
+      .team-member { width:90%; margin-bottom:20px; }
+      .team-member img { width:120px; height:120px; }
+      .blog-grid { grid-template-columns:1fr; }
+    }
   </style>
 </head>
 <body>
@@ -102,15 +117,17 @@
 
   <!-- Intro -->
   <section class="intro">
+    <h1>RAID 2026</h1>
+    <p>.</p>
     <a href="#about" class="btn">Découvrir</a>
   </section>
 
   <!-- À propos -->
   <section id="about">
     <h2>À propos du rallye</h2>
-    <p>Un rallye-raid unique entre dunes, navigation et aventure humaine.Le M'Hamid Express est événement sportif mêlant aventure, navigation et esprit d’équipe.Partager avec la ALLEZZOU Team ce moment unique </p>
+    <p>Le M'Hamid Express est un événement sportif mêlant aventure, navigation et esprit d’équipe.Un rallye-raid unique entre dunes, navigation et aventure humaine.  Partager avec la Team ALLEZZOU Team.</p>
   </section>
-  
+
   <!-- Équipe -->
   <section id="team">
     <h2>Notre équipe</h2>
@@ -124,18 +141,40 @@
         <img src="https://i.imgur.com/dP5RvT8.jpg" alt="Copilote">
         <h3>Copilote</h3>
         <p>Expert en roadbook et GPS.</p>
-         </div>
+      </div>
+    </div>
   </section>
-  
-  <!-- Galerie -->
+
+  <!-- Galerie / Carrousel CSS -->
   <section id="gallery">
     <h2>Galerie</h2>
-    <div class="gallery-grid">
-      <img src="https://i.imgur.com/mkv3shD.jpg" alt="Photo 1">
-      <img src="https://i.imgur.com/dP5RvT8.jpg" alt="Photo 2">
-      <img src="https://i.imgur.com/pcqXzPp.jpg" alt="Photo 3">
-      <img src="https://i.imgur.com/GzzBPnZ.png" alt="Photo 4">
-      <img src="https://i.imgur.com/wrYns3E.jpg" alt="Photo 5">
+    <div class="carousel">
+      <!-- Radios -->
+      <input type="radio" name="slide" id="s1" checked>
+      <input type="radio" name="slide" id="s2">
+      <input type="radio" name="slide" id="s3">
+      <input type="radio" name="slide" id="s4">
+      <input type="radio" name="slide" id="s5">
+
+      <!-- Vue -->
+      <div class="carousel-viewport">
+        <div class="carousel-track">
+          <div class="carousel-slide"><img src="https://i.imgur.com/mkv3shD.jpg" alt="Photo 1"></div>
+          <div class="carousel-slide"><img src="https://i.imgur.com/dP5RvT8.jpg" alt="Photo 2"></div>
+          <div class="carousel-slide"><img src="https://i.imgur.com/pcqXzPp.jpg" alt="Photo 3"></div>
+          <div class="carousel-slide"><img src="https://i.imgur.com/GzzBPnZ.png" alt="Photo 4"></div>
+          <div class="carousel-slide"><img src="https://i.imgur.com/wrYns3E.jpg" alt="Photo 5"></div>
+        </div>
+      </div>
+
+      <!-- Points -->
+      <div class="carousel-dots">
+        <label class="dot" for="s1" aria-label="Aller à la photo 1"></label>
+        <label class="dot" for="s2" aria-label="Aller à la photo 2"></label>
+        <label class="dot" for="s3" aria-label="Aller à la photo 3"></label>
+        <label class="dot" for="s4" aria-label="Aller à la photo 4"></label>
+        <label class="dot" for="s5" aria-label="Aller à la photo 5"></label>
+      </div>
     </div>
   </section>
 
@@ -176,24 +215,17 @@
     </div>
   </section>
 
-  <!-- Équipe -->
-  <section id="team">
-    <h2>Notre équipe</h2>
-    <div class="team-row">
-      <div class="team-member">
-        <img src="https://i.imgur.com/mkv3shD.jpg" alt="Pilote">
-        <h3>Pilote</h3>
-        <p>Spécialiste des dunes, passionné de navigation.</p>
-      </div>
-      <div class="team-member">
-        <img src="https://i.imgur.com/dP5RvT8.jpg" alt="Copilote">
-        <h3>Copilote</h3>
-        <p>Expert en roadbook et GPS.</p>
-         </div>
-  </section>
+  <!-- Sections détaillées des jours (exemples vides, à compléter) -->
+  <section id="jour1"><h2>Jour 1 – Départ de Mhamid</h2><p>Contenu complet à ajouter.</p></section>
+  <section id="jour2"><h2>Jour 2 – Dunes et navigation</h2><p>Contenu complet à ajouter.</p></section>
+  <section id="jour3"><h2>Jour 3 – Étape marathon</h2><p>Contenu complet à ajouter.</p></section>
+  <section id="jour4"><h2>Jour 4 – Navigation complexe</h2><p>Contenu complet à ajouter.</p></section>
+  <section id="jour5"><h2>Jour 5 – Étape des dunes géantes</h2><p>Contenu complet à ajouter.</p></section>
+  <section id="jour6"><h2>Jour 6 – Arrivée triomphale</h2><p>Contenu complet à ajouter.</p></section>
+
   <!-- Footer -->
   <footer>
     © 2026 ALLEZZOU RAID — Tous droits réservés
   </footer>
 </body>
-        </html>
+</html>
