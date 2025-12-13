@@ -23,7 +23,7 @@
 
     /* Intro avec image en fond */
     .intro {
-      margin-top:100px;
+      margin-top:60px;
       text-align:center;
       background:url("https://i.imgur.com/GzzBPnZ.png") no-repeat center center;
       background-size:cover;
@@ -69,6 +69,39 @@
     .blog-post h3 { margin-top:0; color:#e63946; }
     .blog-post p { color:#444; margin-bottom:15px; }
 
+    /* Équipe */
+    #team { text-align:center; }
+    .team-row {
+      display:flex;
+      justify-content:center;
+      gap:30px;
+      flex-wrap:wrap;
+      margin-top:30px;
+    }
+    .team-member {
+      background:#fff;
+      padding:20px;
+      border-radius:10px;
+      text-align:center;
+      width:200px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    }
+    .team-member img {
+      width:150px;
+      height:150px;
+      object-fit:cover;
+      border-radius:50%;
+      margin-bottom:15px;
+    }
+    .team-member h3 {
+      margin:10px 0;
+      color:#e63946;
+    }
+    .team-member p {
+      color:#444;
+      font-size:0.9rem;
+    }
+
     /* Footer */
     footer { background:#1c1c1c; color:#fff; text-align:center; padding:20px; margin-top:40px; }
   </style>
@@ -80,9 +113,9 @@
     <div class="nav-logo">ALLEZZOU RAID</div>
     <ul class="nav-links">
       <li><a href="#about">À propos</a></li>
-      <li><a href="#team">Équipe</a></li>
       <li><a href="#gallery">Galerie</a></li>
       <li><a href="#blog">Blog</a></li>
+      <li><a href="#team">Équipe</a></li>
     </ul>
   </nav>
 
@@ -98,27 +131,6 @@
     <h2>À propos du rallye</h2>
     <p>Le ALLEZZOU RAID est un événement sportif mêlant aventure, navigation et esprit d’équipe.</p>
   </section>
-<!-- Équipe -->
-<section id="team">
-  <h2>Notre Équipe</h2>
-  <div class="team-grid">
-    <div class="team-member">
-      <img src="https://i.imgur.com/abcd123.jpg" alt="Pilote 1">
-      <h3>Pilote 1</h3>
-      <p>Spécialiste des dunes, passionné de navigation.</p>
-    </div>
-    <div class="team-member">
-      <img src="https://i.imgur.com/efgh456.jpg" alt="Copilote 1">
-      <h3>Copilote 1</h3>
-      <p>Expert en roadbook et GPS, garant de la stratégie.</p>
-    </div>
-    <div class="team-member">
-      <img src="https://i.imgur.com/ijkl789.jpg" alt="Mécanicien">
-      <h3>Mécanicien</h3>
-      <p>Assure la fiabilité du véhicule et les réparations rapides.</p>
-    </div>
-  </div>
-</section>
 
   <!-- Galerie -->
   <section id="gallery">
@@ -150,63 +162,26 @@
         <p>Premières grandes dunes franchies. Navigation au GPS et entraide au rendez-vous.</p>
         <a href="#jour2" class="btn">Lire plus</a>
       </article>
-    </div>
-  </section>
+      <article class="blog-post">
+        <h3>Jour 3 – Étape marathon</h3>
+        <p>Les concurrents affrontent une longue étape sans assistance, mettant à l’épreuve leur endurance.</p>
+        <a href="#jour3" class="btn">Lire plus</a>
+      </article>
+      <article class="blog-post">
+        <h3>Jour 4 – Navigation complexe</h3>
+        <p>Les pistes se multiplient, la navigation devient cruciale et les erreurs coûtent cher.</p>
+        <a href="#jour4" class="btn">Lire plus</a>
+      </article>
+      <article class="blog-post">
+        <h3>Jour 5 – Étape des dunes géantes</h3>
+        <p>Les grandes dunes imposent leur loi, les véhicules et les équipages sont poussés à leurs limites.</p>
+        <a href="#jour5" class="btn">Lire plus</a>
+      </article>
+      <article class="blog-post">
+        <h3>Jour 6 – Arrivée triomphale</h3>
+        <p>Les équipes franchissent la ligne d’arrivée, célébrant une aventure humaine et sportive unique.</p>
+        <a href="#jour6" class="btn">Lire plus</a>
+      </article>
 
-  <!-- Articles détaillés -->
-  <section id="jour1">
-    <h2>Jour 1 – Départ de Mhamid</h2>
-    <p>Texte complet de l’article du jour 1. Ici tu peux raconter en détail le départ, les paysages, les anecdotes, etc.</p>
-  </section>
-
-  <section id="jour2">
-    <h2>Jour 2 – Dunes et navigation</h2>
-    <p>Texte complet de l’article du jour 2. Tu peux développer sur les difficultés rencontrées, la navigation GPS, l’entraide entre équipes, etc.</p>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    © 2026 ALLEZZOU RAID — Tous droits réservés
-  </footer>
-
-  <!-- Script carrousel avec auto-défilement -->
-  <script>
-    const track = document.querySelector('.carousel-track');
-    const slides = Array.from(track.children);
-    const prevButton = document.querySelector('.carousel-btn.prev');
-    const nextButton = document.querySelector('.carousel-btn.next');
-    let currentIndex = 0;
-
-    function updateCarousel() {
-      const slideWidth = slides[0].getBoundingClientRect().width;
-      track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-    }
-
-    function showNextSlide() {
-      currentIndex = (currentIndex + 1) % slides.length;
-      updateCarousel();
-    }
-
-    function showPrevSlide() {
-      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-      updateCarousel();
-    }
-
-    nextButton.addEventListener('click', showNextSlide);
-    prevButton.addEventListener('click', showPrevSlide);
-
-    window.addEventListener('resize', updateCarousel);
-    updateCarousel();
-
-    // Auto-défilement toutes les 5 secondes
-    let autoSlide = setInterval(showNextSlide, 5000);
-
-    // Pause auto-défilement au survol
-    const carousel = document.querySelector('.carousel');
-    carousel.addEventListener('mouseenter', () => clearInterval(autoSlide));
-    carousel.addEventListener('mouseleave', () => {
-      autoSlide = setInterval(showNextSlide, 5000);
-    });
-  </script>
-
-</body
+    </body>
+    </htlm>
