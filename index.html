@@ -141,46 +141,75 @@
       height: 40%;
       background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
     }
-  </style>
-</head>
 
-<body>
+    /* ------------------------------
+       INTRO
+    ------------------------------ */
+    .intro {
+      text-align: center;
+      padding: 80px 20px;
+      background: #fff;
+      border-bottom: 3px solid #e63946;
+    }
 
-<!-- ✅ NAVBAR -->
-<nav class="navbar">
-  <div class="navbar-container">
-    <div class="nav-logo">ALLEZZOU RAID</div>
-    <ul class="nav-links">
-      <li><a href="#about">À propos</a></li>
-      <li><a href="#gallery">Galerie</a></li>
-      <li><a href="#team">Équipe</a></li>
-      <li><a href="#partners">Partenaires</a></li>
-      <li><a href="#register">Inscriptions</a></li>
-    </ul>
-    <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-</nav>
+    .intro h1 {
+      font-size: 3.2rem;
+      margin-bottom: 15px;
+    }
 
-<!-- ✅ HERO -->
-<section class="hero">
-  <img src="https://i.imgur.com/GzzBPnZ.png" class="hero-img">
-  <div class="hero-gradient"></div>
-</section>
+    .intro p {
+      font-size: 1.4rem;
+      color: #444;
+    }
 
-<script>
-  // ✅ Script pour ouvrir/fermer le menu
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.querySelector('.nav-links');
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: #e63946;
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: 0.3s;
+      font-family: 'Oswald', sans-serif;
+    }
 
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    hamburger.classList.toggle('active');
-  });
-</script>
+    .btn:hover {
+      background: black;
+    }
 
-</body>
-</html>
+    /* ------------------------------
+       SECTIONS
+    ------------------------------ */
+    section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    section h2 {
+      color: #e63946;
+      margin-bottom: 20px;
+    }
+
+    /* ------------------------------
+       BLOG
+    ------------------------------ */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .blog-post {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .blog-post h3 {
+      margin-top: 0;
+      color: #e63946;
+    }
+
