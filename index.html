@@ -134,6 +134,36 @@
   <footer>
     © 2026 ALLEZZOU RAID — Tous droits réservés
   </footer>
+<script>
+  const track = document.querySelector('.carousel-track');
+  const slides = Array.from(track.children);
+  const prevButton = document.querySelector('.carousel-btn.prev');
+  const nextButton = document.querySelector('.carousel-btn.next');
+  let currentIndex = 0;
 
+  function updateCarousel() {
+    const slideWidth = slides[0].getBoundingClientRect().width;
+    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+  }
+
+  function showNextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateCarousel();
+  }
+
+  function showPrevSlide() {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    updateCarousel();
+  }
+
+  nextButton.addEventListener('click', showNextSlide);
+  prevButton.addEventListener('click', showPrevSlide);
+
+  window.addEventListener('resize', updateCarousel);
+  updateCarousel();
+
+  // Auto-défilement toutes les 5 secondes
+  setInterval(showNextSlide, 5000);
+</script>
 </body>
 </html>
