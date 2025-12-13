@@ -8,6 +8,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
 
   <style>
+    /* ------------------------------
+       RESET + BASE
+    ------------------------------ */
     body {
       margin: 0;
       padding: 0;
@@ -16,7 +19,60 @@
       color: #1c1c1c;
     }
 
-    /* ✅ HERO BANNER */
+    h1, h2, h3 {
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* ------------------------------
+       NAVBAR
+    ------------------------------ */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(6px);
+      color: white;
+      z-index: 1000;
+    }
+
+    .nav-logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      color: white;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #ff7f11;
+    }
+
+    /* ------------------------------
+       HERO BANNER
+    ------------------------------ */
     .hero {
       position: relative;
       width: 100%;
@@ -39,30 +95,32 @@
       background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
     }
 
-    /* ✅ INTRO TEXTE */
+    /* ------------------------------
+       INTRO
+    ------------------------------ */
     .intro {
       text-align: center;
-      padding: 60px 20px;
+      padding: 80px 20px;
+      background: #fff;
+      border-bottom: 3px solid #e63946;
     }
 
     .intro h1 {
-      font-size: 3rem;
-      font-family: 'Oswald', sans-serif;
-      margin-bottom: 10px;
+      font-size: 3.2rem;
+      margin-bottom: 15px;
     }
 
     .intro p {
-      font-size: 1.3rem;
-      margin-bottom: 20px;
+      font-size: 1.4rem;
+      color: #444;
     }
 
     .btn {
       display: inline-block;
       margin-top: 20px;
       padding: 12px 25px;
-      background: red;
+      background: #e63946;
       color: white;
-      text-decoration: none;
       font-weight: bold;
       border-radius: 5px;
       transition: 0.3s;
@@ -73,49 +131,114 @@
       background: black;
     }
 
-    /* ✅ SECTIONS */
+    /* ------------------------------
+       SECTIONS
+    ------------------------------ */
     section {
-      padding: 50px 20px;
-      max-width: 1000px;
+      padding: 60px 20px;
+      max-width: 1100px;
       margin: auto;
     }
 
     section h2 {
-      font-family: 'Oswald', sans-serif;
       color: #e63946;
       margin-bottom: 20px;
-      text-transform: uppercase;
     }
 
+    /* ------------------------------
+       GALERIE
+    ------------------------------ */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+    }
+
+    /* ------------------------------
+       ÉQUIPE
+    ------------------------------ */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      text-align: center;
+    }
+
+    .team-card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .team-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .team-card h3 {
+      margin: 10px 0 5px;
+    }
+
+    .team-card p {
+      color: #555;
+    }
+
+    /* ------------------------------
+       FOOTER
+    ------------------------------ */
     footer {
       background: #1c1c1c;
       color: white;
       text-align: center;
       padding: 20px;
-    }
-
-    footer a {
-      color: #ff7f11;
-      text-decoration: none;
+      margin-top: 40px;
     }
   </style>
 </head>
 
 <body>
 
-<!-- ✅ HERO BANNER -->
+<!-- ✅ NAVBAR -->
+<nav class="navbar">
+  <div class="nav-logo">ALLEZZOU RAID</div>
+  <ul class="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#gallery">Galerie</a></li>
+    <li><a href="#team">Équipe</a></li>
+    <li><a href="#register">Inscriptions</a></li>
+  </ul>
+</nav>
+
+<!-- ✅ HERO -->
 <section class="hero">
-  <img src="https://i.imgur.com/GzzBPnZ.png" alt="Bannière ALLEZZOU RAID" class="hero-img">
+  <img src="https://i.imgur.com/GzzBPnZ.png" class="hero-img">
   <div class="hero-gradient"></div>
 </section>
 
-<!-- ✅ INTRO TEXTE (ne cache plus l’image) -->
+<!-- ✅ INTRO -->
 <section class="intro">
-  <h1>ALLEZZOU RAID</h1>
-  <p>L’aventure commence ici</p>
-  <a href="#about" class="btn">Découvrir le rallye</a>
+  <h1>ALLEZZOU RAID 2026</h1>
+  <p>Un rallye-raid unique entre dunes, navigation et aventure humaine.</p>
+  <a href="#register" class="btn">S'inscrire</a>
 </section>
 
+<!-- ✅ ABOUT -->
 <section id="about">
   <h2>À propos du rallye</h2>
   <p>
@@ -123,21 +246,50 @@
   </p>
 </section>
 
-<section id="program">
-  <h2>Programme</h2>
-  <p>Le programme détaillé arrive bientôt.</p>
-</section>
-
+<!-- ✅ GALERIE -->
 <section id="gallery">
   <h2>Galerie</h2>
-  <p>Les photos seront ajoutées ici.</p>
+
+  <div class="gallery-grid">
+    <img src="https://i.imgur.com/mkv3shD.jpg">
+    <img src="https://i.imgur.com/dP5RvT8.jpg">
+    <img src="https://i.imgur.com/pcqXzPp.jpg">
+    <img src="https://i.imgur.com/GzzBPnZ.png">
+    <img src="https://i.imgur.com/wrYns3E.jpg">
+    <img src="https://i.imgur.com/X7hL3Wm.jpg">
+    <img src="https://i.imgur.com/ezGKwub.jpg">
+    <img src="https://i.imgur.com/Z6uotuB.jpg">
+    <img src="https://i.imgur.com/Nw9wAK3.jpg">
+    <img src="https://i.imgur.com/nV4ll6I.jpg">
+  </div>
 </section>
 
+<!-- ✅ ÉQUIPE -->
 <section id="team">
-  <h2>Équipe & Partenaires</h2>
-  <p>Section en construction.</p>
+  <h2>Équipe</h2>
+
+  <div class="team-grid">
+    <div class="team-card">
+      <img src="https://i.imgur.com/mkv3shD.jpg">
+      <h3>Nom 1</h3>
+      <p>Rôle / Fonction</p>
+    </div>
+
+    <div class="team-card">
+      <img src="https://i.imgur.com/dP5RvT8.jpg">
+      <h3>Nom 2</h3>
+      <p>Rôle / Fonction</p>
+    </div>
+
+    <div class="team-card">
+      <img src="https://i.imgur.com/pcqXzPp.jpg">
+      <h3>Nom 3</h3>
+      <p>Rôle / Fonction</p>
+    </div>
+  </div>
 </section>
 
+<!-- ✅ INSCRIPTIONS -->
 <section id="register">
   <h2>Inscriptions</h2>
   <p>Formulaire d’inscription bientôt disponible.</p>
@@ -149,4 +301,3 @@
 
 </body>
 </html>
-
