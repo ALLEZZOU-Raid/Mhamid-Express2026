@@ -13,63 +13,89 @@
     /* Navbar */
     .navbar {
       position:fixed; top:0; left:0; right:0;
-      height:20px; background:rgba(0,0,0,0.6); color:#fff;
+      height:60px; background:rgba(0,0,0,0.6); color:#fff;
       display:flex; align-items:center; justify-content:center;
       gap:40px; z-index:1000;
+      backdrop-filter: blur(4px);
     }
     .nav-links { list-style:none; display:flex; gap:25px; margin:0; padding:0; }
     .nav-links a { color:#fff; font-family:'Oswald'; }
     .nav-links a:hover { color:#ff7f11; }
 
-    /* Intro */
+    /* Intro with video background */
     .intro {
-  position: relative;
-  height: 100vh; /* plein écran */
-  overflow: hidden;
-  color: #fff;
-  text-align: center;
-}
-
-.bg-video {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  z-index: -1; /* derrière le texte */
-}
-
-.overlay {
-  position: relative;
-  z-index: 1;
-  padding: 100px 20px;
-  background: rgba(0,0,0,0.3); /* léger voile pour lisibilité */
-}
+      position: relative;
+      height: 100vh; /* plein écran */
+      overflow: hidden;
+      color: #fff;
+      text-align: center;
+      /* push content below fixed navbar */
+      margin-top: 60px;
+    }
+    .bg-video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: -1; /* derrière le texte */
+    }
+    .intro::after {
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(to top, rgba(0,0,0,0.35), rgba(0,0,0,0.1));
+      z-index:0;
+    }
+    .overlay {
+      position: relative;
+      z-index: 1;
+      padding: 100px 20px;
+    }
+    .btn {
+      display:inline-block; margin-top:20px; padding:12px 25px;
+      background:#e63946; color:#fff; font-weight:bold; border-radius:5px;
+      font-family:'Oswald'; transition:0.3s;
+    }
+    .btn:hover { background:#000; }
 
     /* Sections */
     section { max-width:1100px; margin:0 auto; padding:60px 20px; }
     section h2 { color:#e63946; margin-bottom:20px; }
 
-    /* Carrousel CSS (radio + dots) */
-   .carousel { max-width:600px; margin:auto; }
-.carousel-viewport { overflow:hidden; }
-.carousel-track { display:flex; width:300%; transition:transform 0.6s ease; }
-.carousel-slide { min-width:100%; height:300px; }
-.carousel-slide img { width:100%; height:100%; object-fit:cover; }
-
-/* Radios */
-.carousel input[type="radio"] { display:none; }
-#s1:checked ~ .carousel-viewport .carousel-track { transform:translateX(0%); }
-#s2:checked ~ .carousel-viewport .carousel-track { transform:translateX(-100%); }
-#s3:checked ~ .carousel-viewport .carousel-track { transform:translateX(-200%); }
-
-/* Points */
-.carousel-dots { display:flex; justify-content:center; gap:10px; margin-top:10px; }
-.dot { width:12px; height:12px; border-radius:50%; background:#bbb; cursor:pointer; }
-#s1:checked ~ .carousel-dots label[for="s1"],
-#s2:checked ~ .carousel-dots label[for="s2"],
-#s3:checked ~ .carousel-dots label[for="s3"] { background:#e63946; }
-
-
+    /* Scroll-snap gallery */
+    .gallery {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      border-radius: 10px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .slide {
+      flex: 0 0 100%;
+      height: 400px;
+      scroll-snap-align: start;
+      position: relative;
+    }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* recadrage immersif */
+      display: block;
+    }
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #bbb;
+      display: inline-block;
+    }
+    .dots a:hover .dot { background: #e63946; }
 
     /* Équipe */
     #team { text-align:center; }
@@ -90,9 +116,9 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-      .intro { padding:60px 15px; }
+      .overlay { padding: 80px 15px; }
       .intro h1 { font-size:1.8rem; }
-      .carousel-slide { height:250px; }
+      .slide { height:250px; }
       .team-row { flex-direction:column; align-items:center; }
       .team-member { width:90%; margin-bottom:20px; }
       .team-member img { width:120px; height:120px; }
@@ -114,19 +140,18 @@
   </nav>
 
   <!-- Intro with video background -->
-<section class="intro">
-  <video autoplay muted loop playsinline class="bg-video">
-    <source src="ton-video.mp4" type="https://www.youtube.com/watch?v=P1WTgk5C3A0">
-    <!-- Fallback text -->
-    Votre navigateur ne supporte pas la vidéo HTML5.
-  </video>
-  <div class="overlay">
-    <h1>ALLEZZOU RAID 2026</h1>
-    <p>Un rallye-raid unique entre dunes, navigation et aventure humaine.</p>
-    <a href="#about" class="btn">Découvrir</a>
-  </div>
-</section>
-
+  <section class="intro">
+    <video autoplay muted loop playsinline class="bg-video">
+      <!-- Use a real MP4 file here -->
+      <source src="ton-video.mp4" type="video/mp4">
+      Votre navigateur ne supporte pas la vidéo HTML5.
+    </video>
+    <div class="overlay">
+      <h1>ALLEZZOU RAID 2026</h1>
+      <p>Un rallye-raid unique entre dunes, navigation et aventure humaine.</p>
+      <a href="#about" class="btn">Découvrir</a>
+    </div>
+  </section>
 
   <!-- À propos -->
   <section id="about">
@@ -151,32 +176,24 @@
     </div>
   </section>
 
-  <!-- Galerie / Carrousel CSS -->
-<section id="gallery">
-  <h2>Galerie</h2>
-  <div class="carousel">
-    <!-- Radios -->
-    <input type="radio" name="slide" id="s1" checked>
-    <input type="radio" name="slide" id="s2">
-    <input type="radio" name="slide" id="s3">
-
-    <!-- Vue -->
-    <div class="carousel-viewport">
-      <div class="carousel-track">
-        <div class="carousel-slide"><img src="https://i.imgur.com/mkv3shD.jpg" alt="Photo 1"></div>
-        <div class="carousel-slide"><img src="https://i.imgur.com/dP5RvT8.jpg" alt="Photo 2"></div>
-        <div class="carousel-slide"><img src="https://i.imgur.com/pcqXzPp.jpg" alt="Photo 3"></div>
-      </div>
+  <!-- Galerie / Carrousel Scroll-Snap -->
+  <section id="gallery">
+    <h2>Galerie</h2>
+    <div class="gallery">
+      <div class="slide" id="p1"><img src="https://i.imgur.com/mkv3shD.jpg" alt="Photo 1"></div>
+      <div class="slide" id="p2"><img src="https://i.imgur.com/dP5RvT8.jpg" alt="Photo 2"></div>
+      <div class="slide" id="p3"><img src="https://i.imgur.com/pcqXzPp.jpg" alt="Photo 3"></div>
+      <div class="slide" id="p4"><img src="https://i.imgur.com/GzzBPnZ.png" alt="Photo 4"></div>
+      <div class="slide" id="p5"><img src="https://i.imgur.com/wrYns3E.jpg" alt="Photo 5"></div>
     </div>
-
-    <!-- Points -->
-    <div class="carousel-dots">
-      <label for="s1" class="dot"></label>
-      <label for="s2" class="dot"></label>
-      <label for="s3" class="dot"></label>
+    <div class="dots">
+      <a href="#p1"><span class="dot"></span></a>
+      <a href="#p2"><span class="dot"></span></a>
+      <a href="#p3"><span class="dot"></span></a>
+      <a href="#p4"><span class="dot"></span></a>
+      <a href="#p5"><span class="dot"></span></a>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- Blog -->
   <section id="blog">
@@ -229,3 +246,4 @@
   </footer>
 </body>
 </html>
+
