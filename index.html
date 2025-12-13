@@ -24,38 +24,43 @@
 
     /* Intro with video background */
     .intro {
-      position: relative;
-      height: 100vh; /* plein écran */
-      overflow: hidden;
-      color: #fff;
-      text-align: center;
-      /* push content below fixed navbar */
-      margin-top: 60px;
-    }
-    .bg-video {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      z-index: -1; /* derrière le texte */
-    }
-    .intro::after {
-      content:"";
-      position:absolute; inset:0;
-      background: linear-gradient(to top, rgba(0,0,0,0.35), rgba(0,0,0,0.1));
-      z-index:0;
-    }
-    .overlay {
-      position: relative;
-      z-index: 1;
-      padding: 100px 20px;
-    }
-    .btn {
-      display:inline-block; margin-top:20px; padding:12px 25px;
-      background:#e63946; color:#fff; font-weight:bold; border-radius:5px;
-      font-family:'Oswald'; transition:0.3s;
-    }
-    .btn:hover { background:#000; }
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  color: #fff;
+  text-align: center;
+  margin-top: 60px; /* pour compenser la navbar fixe */
+  background: url("https://i.imgur.com/GzzBPnZ.png") no-repeat center center;
+  background-size: cover; /* fallback image */
+}
+
+.bg-video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.intro::after {
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(to top, rgba(0,0,0,0.35), rgba(0,0,0,0.1));
+  z-index:0;
+}
+
+.overlay {
+  position: relative;
+  z-index: 1;
+  padding: 100px 20px;
+}
+
+.btn {
+  display:inline-block; margin-top:20px; padding:12px 25px;
+  background:#e63946; color:#fff; font-weight:bold; border-radius:5px;
+  font-family:'Oswald'; transition:0.3s;
+}
+.btn:hover { background:#000; }
 
     /* Sections */
     section { max-width:1100px; margin:0 auto; padding:60px 20px; }
@@ -138,20 +143,21 @@
       <li><a href="#team">Équipe</a></li>
     </ul>
   </nav>
+  
+<!-- Intro avec fallback image -->
+<section class="intro">
+  <video autoplay muted loop playsinline class="bg-video">
+    <!--https://media.istockphoto.com/id/2231956530/fr/vid%C3%A9o/patrouille-militaire-am%C3%A9ricaine-dans-le-d%C3%A9sert-humvee.mp4?p=1&s=mp4-640x640-is&k=20&c=EwUE_lySLfP9AdlY0a-wLv1N6hX1VXNnaGTu2wb7YDU= -->
+    <source src="desert.mp4" type="video/mp4">
+  </video>
+  <div class="overlay">
+    <h1>ALLEZZOU RAID 2026</h1>
+    <p>Un rallye-raid unique entre dunes, navigation et aventure humaine.</p>
+    <a href="#about" class="btn">Découvrir</a>
+  </div>
+</section>
 
-  <!-- Intro with video background -->
-  <section class="intro">
-    <video autoplay muted loop playsinline class="bg-video">
-      <!-- Use a real MP4 file here -->
-      <source src="ton-video.mp4" type="video/mp4">
-      Votre navigateur ne supporte pas la vidéo HTML5.
-    </video>
-    <div class="overlay">
-      <h1>ALLEZZOU RAID 2026</h1>
-      <p>Un rallye-raid unique entre dunes, navigation et aventure humaine.</p>
-      <a href="#about" class="btn">Découvrir</a>
-    </div>
-  </section>
+  
 
   <!-- À propos -->
   <section id="about">
