@@ -25,12 +25,12 @@
     /* Intro avec image de fond */
 .intro {
   position: relative;
-  min-height: 400px;       /* hauteur réduite, ajuste selon ton besoin */
+  min-height: 600px;       /* hauteur réduite, ajuste selon ton besoin */
   color: #fff;
   text-align: center;
   margin-top: 30px;        /* compense la navbar fixe */
   background: url("https://i.imgur.com/wTdp7eU.png") no-repeat center center;
-  background-size: cover;  /* l’image couvre toute la zone */
+  background-size: contain;  /* l’image couvre toute la zone */
 
 }
 
@@ -58,7 +58,7 @@
     text-align: center;
   }
   .about-photo img {
-    max-width: 90%;
+    max-width: 70%;
     margin-bottom: 20px;
   }
 }
@@ -81,7 +81,7 @@
     .slide img {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* recadrage immersif */
+      object-fit: contain; /* recadrage immersif */
       display: block;
     }
     .dots {
@@ -244,7 +244,7 @@
       </p>
       <p>
         Un grand merci d’avance pour votre soutien,<br>
-        <strong>ALLEZZOU vers l'avanture</strong>
+        <strong>ALLEZZOU vers l'aventure</strong>
       </p>
     </div>
   </div>
