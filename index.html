@@ -36,8 +36,33 @@
 }
 
     /* Sections */
-    section { max-width:1100px; margin:0 auto; padding:60px 20px; }
-    section h2 { color:#e63946; margin-bottom:20px; }
+   .about-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.about-photo img {
+  max-width: 320px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.about-text {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .about-photo img {
+    max-width: 90%;
+    margin-bottom: 20px;
+  }
+}
 
     /* Scroll-snap gallery */
     .gallery {
@@ -159,9 +184,10 @@
     <div class="nav-logo">ALLEZZOU TEAM</div>
     <ul class="nav-links">
       <li><a href="#about">À propos</a></li>
-      <li><a href="#gallery">Galerie</a></li>
-      <li><a href="#blog">Blog</a></li>
       <li><a href="#team">Équipe</a></li>
+      <li><a href="#sponsor">Sponsor</a></li>
+       <li><a href="#gallery">Galerie</a></li>
+      <li><a href="#blog">Blog</a></li>
     </ul>
   </nav>
   
@@ -181,14 +207,46 @@
 
   <!-- À propos -->
   <section id="about">
-    <h2>L'origine</h2>
-    <p>Pationne d'automobile depuis mes premiers pas. Après quarante années d’attente, mon rêve devient enfin réalité : je vais participer à un Rallye Raid automobile. Cette course s’appelle le M’Hamid Express et se déroulera du 25 au 30 janvier prochain, dans le sud marocain.
- 🚗 La Team ALLEZZOU vient de naître, et vous en faites partie en portant ce T-shirt, en soutenant la voiture et en devenant nos ambassadeurs avant et pendant la course. (Et si jamais… ce T-shirt fera aussi une excellente chemise de nuit 😉).
-⛽ Vous pouvez également devenir partenaires en m’aidant à finaliser le budget de la course, notamment en finançant une partie des 485 litres de carburant nécessaires pour ce rallye. La pompe à essence est symboliquement incluse avec les T-shirts… et elle n’accepte que du liquide, bien sûr !
-📲 Je partagerai début janvier les liens vers nos réseaux de communication pour suivre l’aventure en direct.
-Un grand merci d’avance pour votre soutien,
-ALLEZZOU… et Joyeux Noël à tous ! 🎅✨
-.</p>
+  <h2>L'origine</h2>
+  <div class="about-container">
+    <!-- Photo immersive -->
+    <div class="about-photo">
+      <img src="https://i.imgur.com/mkv3shD.jpg" alt="Souvenir d'enfance passion automobile">
+    </div>
+    <!-- Texte -->
+    <div class="about-text">
+      <p>
+        Depuis mon plus jeune âge, l’automobile a toujours été au cœur de mes rêves. 
+        Enfant, je regardais avec des étoiles dans les yeux le départ du mythique Paris-Dakar, 
+        qui passait devant chez moi. Ces instants, chargés d’émotion et d’aventure, ont marqué 
+        mon imagination et nourri un désir profond : un jour, moi aussi, je vivrai cette expérience.
+      </p>
+      <p>
+        Après quarante années d’attente, ce rêve devient enfin réalité : je vais participer à un 
+        Rallye Raid automobile. La course s’appelle le <strong>M’Hamid Express</strong> et se déroulera 
+        du 25 au 30 janvier prochain, dans le sud marocain. 🚗
+      </p>
+      <p>
+        C’est ainsi qu’est née la <strong>Team ALLEZZOU</strong>. Vous en faites partie en portant 
+        ce T-shirt, en soutenant la voiture et en devenant nos ambassadeurs avant et pendant la course. 
+        (Et si jamais… ce T-shirt fera aussi une excellente chemise de nuit 😉).
+      </p>
+      <p>
+        ⛽ Vous pouvez également devenir partenaires en m’aidant à finaliser le budget de la course, 
+        notamment en finançant une partie des <strong>485 litres de carburant</strong> nécessaires pour ce rallye. 
+        La pompe à essence est symboliquement incluse avec les T-shirts… et elle n’accepte que du liquide, bien sûr !
+      </p>
+      <p>
+        📲 Début janvier, je partagerai les liens vers nos réseaux de communication pour suivre l’aventure en direct.
+      </p>
+      <p>
+        Un grand merci d’avance pour votre soutien,<br>
+        <strong>ALLEZZOU… et Joyeux Noël à tous ! 🎅✨</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
   </section>
 
   <!-- Équipe -->
