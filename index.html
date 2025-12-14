@@ -25,12 +25,12 @@
     /* Intro with video background */
     .intro {
   position: relative;
-  height: auto;          /* s’adapte au contenu */
+  min-height: 100vh;       /* occupe toute la hauteur de l’écran */
   color: #fff;
   text-align: center;
-  margin-top: 30px;      /* compense la navbar fixe */
+  margin-top: 30px;        /* compense la navbar fixe */
   background: url("https://i.imgur.com/wTdp7eU.png") no-repeat center center;
-  background-size: cover; /* fallback image */
+  background-size: cover;  /* l’image couvre toute la zone */
 }
 
     /* Sections */
